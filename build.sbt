@@ -1,10 +1,10 @@
 onLoad in Global := ((s: State) => { "updateIdea" :: s}) compose (onLoad in Global).value
 
-lazy val sbtIdeaExample: Project =
-  Project("sbt-idea-example", file("."))
+lazy val lensesCodecIdeaPlugin: Project =
+  Project("lenses-codec-idea-plugin", file("."))
     .enablePlugins(SbtIdeaPlugin)
     .settings(
-      name := "sbt-idea-example",
+      name := "lenses-codec-idea-plugin",
       version := "1.0",
       scalaVersion := "2.11.7",
       assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false),
@@ -16,22 +16,22 @@ lazy val sbtIdeaExample: Project =
     )
 
 lazy val ideaRunner: Project = project.in(file("ideaRunner"))
-  .dependsOn(sbtIdeaExample % Provided)
+  .dependsOn(lensesCodecIdeaPlugin % Provided)
   .settings(
     name := "ideaRunner",
     version := "1.0",
     scalaVersion := "2.11.7",
     autoScalaLibrary := false,
-    unmanagedJars in Compile <<= ideaMainJars.in(sbtIdeaExample),
+    unmanagedJars in Compile <<= ideaMainJars.in(lensesCodecIdeaPlugin),
     unmanagedJars in Compile += file(System.getProperty("java.home")).getParentFile / "lib" / "tools.jar"
   )
 
 lazy val packagePlugin = TaskKey[File]("package-plugin", "Create plugin's zip file ready to load into IDEA")
 
-packagePlugin in sbtIdeaExample <<= (assembly in sbtIdeaExample,
-  target in sbtIdeaExample,
+packagePlugin in lensesCodecIdeaPlugin <<= (assembly in lensesCodecIdeaPlugin,
+  target in lensesCodecIdeaPlugin,
   ivyPaths) map { (ideaJar, target, paths) =>
-  val pluginName = "sbt-idea-example"
+  val pluginName = "lenses-codec-idea-plugin"
   val ivyLocal = paths.ivyHome.getOrElse(file(System.getProperty("user.home")) / ".ivy2") / "local"
   val sources = Seq(
     ideaJar -> s"$pluginName/lib/${ideaJar.getName}"
