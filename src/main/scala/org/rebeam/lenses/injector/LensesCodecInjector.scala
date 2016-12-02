@@ -31,6 +31,7 @@ class LensesCodecInjector extends SyntheticMembersInjector {
     }
     fields.foreach({ i =>
       val template = if (clazz.typeParameters.isEmpty)
+        // This is sometimes giving "Any" - would be nice to fix
         s"def $prefix${i.name}: _root_.org.rebeam.lenses.LensN[${clazz.qualifiedName}, ${i.getType(TypingContext.empty).map(_.canonicalText).getOrElse("Any")}] = ???"
       else {
         val tparams = s"[${clazz.typeParameters.map(_.getText).mkString(",")}]"
