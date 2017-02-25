@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>org.rebeam.lenses.lenses-codec-idea-plugin</id>
     <name>LensesCodec IDEA Plugin</name>
-    <version>1.0</version>
+    <version>1.1</version>
     <vendor url="https://github.com/trepidacious/lenses-codec-idea-plugin">Rebeam.org</vendor>
 
     <description>IntelliJ IDEA plugin supporting LensesCodec macros</description>

@@ -7,4 +7,4 @@ The Monocle plugin source is [here](https://github.com/JetBrains/intellij-scala/
 
 This project is based on the [skeleton plugin example](https://github.com/JetBrains/sbt-idea-example) with just the actual injector package/class and plugin name changed.
 
-To install plugin, clone this repository then run `sbt`, and run task `packagePlugin`. The plugin will be produced in `target/scala-2.11` directory, and can be installed in Idea from `Preferences -> Plugins -> Install plugin from disk...`
+To install plugin, clone this repository then run `sbt`, and run task `packagePlugin`. The plugin will be produced in `target/scala-2.12` directory, and can be installed in Idea from `Preferences -> Plugins -> Install plugin from disk...`

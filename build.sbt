@@ -5,8 +5,8 @@ lazy val lensesCodecIdeaPlugin: Project =
     .enablePlugins(SbtIdeaPlugin)
     .settings(
       name := "lenses-codec-idea-plugin",
-      version := "1.0",
-      scalaVersion := "2.11.7",
+      version := "1.1",
+      scalaVersion := "2.12.1",
       assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false),
       ideaInternalPlugins := Seq(),
       ideaExternalPlugins := Seq(IdeaPlugin.Zip("scala-plugin", url("https://plugins.jetbrains.com/files/1347/21610/scala-intellij-bin-1.9.2.zip"))),
@@ -20,7 +20,7 @@ lazy val ideaRunner: Project = project.in(file("ideaRunner"))
   .settings(
     name := "ideaRunner",
     version := "1.0",
-    scalaVersion := "2.11.7",
+    scalaVersion := "2.12.1",
     autoScalaLibrary := false,
     unmanagedJars in Compile <<= ideaMainJars.in(lensesCodecIdeaPlugin),
     unmanagedJars in Compile += file(System.getProperty("java.home")).getParentFile / "lib" / "tools.jar"
